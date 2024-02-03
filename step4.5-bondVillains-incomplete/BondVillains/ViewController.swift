@@ -13,6 +13,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Properties
+    let cellReuseIdentifier = "VillainCell"
     
     // Get ahold of some villains, for the table
     // This is an array of Villain instances
@@ -25,7 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VillainCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
         let villain = self.allVillains[(indexPath as NSIndexPath).row]
 
         // Set the name and image
