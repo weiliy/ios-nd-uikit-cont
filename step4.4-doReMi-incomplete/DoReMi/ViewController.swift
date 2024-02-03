@@ -20,8 +20,15 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     // Choose some data to show in your table
     
-    let model: [String] = [
-        // TODO: Fill this array with data
+    let model = [
+        ["text": "Do", "detail": "C - The first note of the major scale in solfège"],
+        ["text": "Re", "detail": "D - The second note of the major scale in solfège"],
+        ["text": "Mi", "detail": "E - The third note of the major scale in solfège"],
+        ["text": "Fa", "detail": "F - The fourth note of the major scale in solfège"],
+        ["text": "So", "detail": "G - The fifth note of the major scale in solfège"],
+        ["text": "La", "detail": "A - The sixth note of the major scale in solfège"],
+        ["text": "Ti", "detail": "B - The seventh note of the major scale in solfège"],
+        ["text": "Do", "detail": "C - The octave note of the major scale in solfège"]
     ]
     
     // MARK: UITableViewDataSource
@@ -30,12 +37,16 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO: Implement method to return the correct number of rows.
-        return 0
+        return model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //TODO: Implement method to return cell with the correct reuseidentifier and populated with the correct data.
-        let placeholderCell = UITableViewCell()
-        return placeholderCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let dictionary = model[indexPath.row]
+        cell.textLabel?.text = dictionary["text"]
+        cell.detailTextLabel?.text = dictionary["detail"]
+        return cell
     }
 }
