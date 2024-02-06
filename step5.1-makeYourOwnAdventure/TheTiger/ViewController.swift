@@ -22,6 +22,10 @@ class ViewController: UIViewController {
             navigationController.popToRootViewController(animated: true)
         }
     }
+    
+    deinit {
+        print("View Controller Deallocated")
+    }
 
 }
 
